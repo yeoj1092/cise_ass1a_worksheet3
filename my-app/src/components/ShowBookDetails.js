@@ -7,14 +7,15 @@ class showBookDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: {}
+      book: {
+      }
     };
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
+    console.log("Print id: " + this.props.match.params.id);
     axios
-      .get('https://cise3.herokuapp.com/api/books'+this.props.match.params.id)
+      .get('https://cise3.herokuapp.com/api/books/'+this.props.match.params.id)
       .then(res => {
         // console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
@@ -28,7 +29,7 @@ class showBookDetails extends Component {
 
   onDeleteClick (id) {
     axios
-      .delete('http://cise3.herokuapp.com/api/books/'+id)
+      .delete('https://cise3.herokuapp.com/api/books/'+id)
       .then(res => {
         this.props.history.push("/");
       })
@@ -125,7 +126,7 @@ class showBookDetails extends Component {
             {/* <br />
             <button type="button" class="btn btn-outline-info btn-lg btn-block">Edit Book</button>
             <button type="button" class="btn btn-outline-danger btn-lg btn-block">Delete Book</button> */}
-
+        
         </div>
       </div>
     );
